@@ -76,26 +76,20 @@ public class MyStringsUtils {
     }
 
     public static String reverse(String world) {
-        if(world == null){
+        if (world == null) {
             return null;
         }
-        if(world.length() == 0){
+        if (world.length() == 0) {
             return "";
         }
         char[] worldArray = world.toCharArray();
-        if(worldArray.length % 2 == 1) {
-            for (int i = 0; i <= worldArray.length / 2; i++) {
-                char aux = worldArray[i];
-                worldArray[i] = worldArray[worldArray.length - i - 1];
-                worldArray[worldArray.length - i - 1] = aux;
-            }
-        }else{
-            for (int i = 0; i < worldArray.length / 2; i++) {
-                char aux = worldArray[i];
-                worldArray[i] = worldArray[worldArray.length - i - 1];
-                worldArray[worldArray.length - i - 1] = aux;
-            }
+
+        for (int i = 0; i < worldArray.length / 2; i++) {
+            char aux = worldArray[i];
+            worldArray[i] = worldArray[worldArray.length - i - 1];
+            worldArray[worldArray.length - i - 1] = aux;
         }
+
         return new String(worldArray);
     }
 
