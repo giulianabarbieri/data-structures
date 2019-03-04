@@ -93,5 +93,59 @@ public class MyStringsUtils {
         return new String(worldArray);
     }
 
+    public static String replace(String string) { // Space complexity is O(n^2) ouch!! Time is O(n)
+        if (string == null) {
+            return null;
+        }
+        String resultString = "";
+        char[] inputString = string.toCharArray();
+        for (int i = 0; i < inputString.length; i++) {
+            if (Character.toString(inputString[i]).equals(" ")) {
+                resultString = resultString + "%20"; // copy the string
+            } else {
+                resultString = resultString + inputString[i]; // copy the string
+            }
+        }
+        return resultString;
+    }
+
+    public static String replaceWell(String string) { //space complexity is O(n) time is O(n)
+        if (string == null) {
+            return null;
+        }
+        StringBuffer outputString = new StringBuffer();
+        char[] inputString = string.toCharArray(); //O(n)
+        for (int i = 0; i < inputString.length; i++) { //O(n)
+            if (Character.toString(inputString[i]).equals(" ")) {
+                outputString.append("%20");
+            } else {
+                outputString.append(inputString[i]); //just append not copy
+            }
+        }
+        return String.valueOf(outputString); //O(n)
+    }
+
+    public static void rotate(int[][] matrix) {
+        //lets suppose that for now we only want to rotate the first ring
+        int length = matrix.length;
+        for(int j=0 ; j < (length /2) ; j++) {
+
+            for (int i = 0 + j; i < length - 1 - j; i++) {
+
+                int aux1 = matrix[i][length - 1 - j];
+                matrix[i][length - 1 - j] = matrix[j][i];
+
+                int aux2 = matrix[length - 1 - j][length - 1 - i ];
+                matrix[length - 1 - j][length - 1 - i] = aux1;
+
+                int aux3 = matrix[length - 1 - i][j];
+                matrix[length - 1 - i ][j] = aux2;
+
+                matrix[j][i] = aux3;
+            }
+        }
+
+    }
+
 
 }
